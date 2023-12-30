@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import { userRouter } from './routes/user';
+
 // import {userRouter} from './routes/user'; 
 // import {productRouter} from './routes/product';
 
@@ -13,6 +15,8 @@ app.use(cors()) // to allow cross origin requests
 
 // app.use('/user',userRouter); // mounting the router to the app 
 // app.use('/product',productRouter); 
+
+app.use("/user",userRouter);
 
 mongoose.connect(
     "mongodb+srv://avyaanverma:hkn7B25lrTynppNV@cluster0.vg9tcof.mongodb.net/"
