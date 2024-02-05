@@ -3,7 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import { userRouter } from './routes/user';
-
+import { productRouter } from './routes/product';
 // import {userRouter} from './routes/user'; 
 // import {productRouter} from './routes/product';
 
@@ -17,13 +17,13 @@ app.use(cors()) // to allow cross origin requests
 // app.use('/product',productRouter); 
 
 app.use("/user",userRouter);
+app.use("/product",productRouter);
 
-mongoose.connect(
-    "mongodb+srv://avyaanverma:hkn7B25lrTynppNV@cluster0.vg9tcof.mongodb.net/"
-).then(client => {
+mongoose.connect("mongodb://localhost:27017/ecommerce")
+.then(client => {
     console.log('Connected to MongoDB database!');
 })
-app.listen(3000,()=>{
-    console.log('Server on port 3000');   
+app.listen(3001,()=>{
+    console.log('Server on port 3001');   
 })
 

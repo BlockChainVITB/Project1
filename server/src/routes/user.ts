@@ -8,8 +8,11 @@ const router = Router();
 // "localhost:3001/register "
 
 router.post("/register", async (req: Request, res: Response) => {
-  const { username, password } = req.body;
-
+  const { username, password } = req.body; // Destructure username and password from req.body
+  console.log(req.body);
+  if (!username || !password) { // Check if username or password is missing
+    return res.status(400).json({ message: "Username and password are required" });
+  }
   try {
     const user = await UserModel.findOne({ username });
 
